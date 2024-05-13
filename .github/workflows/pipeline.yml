@@ -28,5 +28,5 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: check if last message contains test
         env:
-          COMMIT_MESSAGES: ${{ contains(toJson(github.event.head_commit.message), "test" ) }}
+          COMMIT_MESSAGES: ${{ contains(toJson(github.event.head_commit.message), 'test' ) }}
         run: echo "$COMMIT_MESSAGES"
