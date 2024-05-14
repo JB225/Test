@@ -28,9 +28,12 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: check if last message contains test
         env:
+          COMMIT_MESSAGES: ${{ contains(toJson(github.event.head_commit.message), 'test' ) }}
+        run: echo "$COMMIT_MESSAGES"
+      - name: negate if last message contains test
+        env:
           COMMIT_MESSAGES: ${{ !contains(toJson(github.event.head_commit.message), 'test' ) }}
         run: echo "$COMMIT_MESSAGES"
-
       - name: test logical and operator
         env:
           COMMIT_MESSAGES: ${{ true && !contains(toJson(github.event.head_commit.message), 'test' ) }}
